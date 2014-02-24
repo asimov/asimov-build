@@ -9,9 +9,9 @@ module.exports = function(grunt) {
             '<%= paths.css.src %>',
             // The bower_components can be changed in .bowerrc so
             // lets ask bower where it's directory is
-            '<%= bowerConfig.directory %>',
+            '<%= asimov.bowerConfig.directory %>',
             // Allow @import "docs/assets/scss/docs" in docs themes
-            '<%= bowerConfig.directory %>/asimov-core/src'
+            '<%= asimov.bowerConfig.directory %>/asimov-core/src'
         ].concat(grunt.config.get('asimov.components'));
     }
 

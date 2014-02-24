@@ -9,8 +9,8 @@ module.exports = function(grunt) {
     var path = require('path'),
         _ = require('lodash'),
         fs = require('fs'),
-        pkg = grunt.config.get('pkg'),
-        bower = grunt.config.get('bower'),
+        pkg = grunt.config.get('asimov.pkg'),
+        bower = grunt.config.get('asimov.bower'),
         isTheme = bower.name.indexOf('-theme-') !== -1,
         options = {
             options: {
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
         // their dependencies locally given the paths and metadata at correct.
 
         grunt.file.expand(
-            { cwd: grunt.config.get('bowerConfig.directory') },
+            { cwd: grunt.config.get('asimov.bowerConfig.directory') },
             'asimov-*/src/js/*.js'
         )
         .forEach(function(file) {
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
                 // It will become the `baseUrl` for the requirejs module
 
                 cwd = path.join(
-                    grunt.config.get('bowerConfig.directory'),
+                    grunt.config.get('asimov.bowerConfig.directory'),
                     componentName,
                     '/src/js'
                 ),
