@@ -1,0 +1,30 @@
+# sass' cache
+/.sass-cache
+*.scssc
+
+# npm packages
+/node_modules
+
+# osx junk files
+.DS_Store
+
+# r.js build log
+build.txt
+
+# ide settings
+*.sublime-*
+*.config
+*.idea
+*.project
+
+# bower
+/bower_components
+
+# ruby env settings
+*.rbenv-version
+*.ruby-version
+/.bundle
+/bundle_components
+
+# generated files
+/.build

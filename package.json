@@ -1,0 +1,29 @@
+{
+  "name": "asimov-build",
+  "version": "0.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "grunt": "~0.4.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xzyfer",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt-contrib-sass": "~0.7.2",
+    "matchdep": "~0.3.0",
+    "grunt-autoprefixer": "~0.6.5",
+    "grunt-contrib-cssmin": "~0.7.0",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-jsvalidate": "~0.2.2",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-contrib-requirejs": "~0.4.1",
+    "lodash": "~2.4.1",
+    "grunt-contrib-uglify": "~0.3.2",
+    "grunt-sync": "0.0.5",
+    "bower-config": "~0.5.0",
+    "glob": "~3.2.8"
+  }
+}
