@@ -42,7 +42,7 @@ module.exports = function(grunt) {
             // Load asimov-build's npm tasks
             //
 
-            matchdep.filterDev('grunt-!(cli)', asimovBuildPath + '/package.json')
+            matchdep.filter('grunt-!(cli)', asimovBuildPath + '/package.json')
                 .forEach(function (task) {
                     // need to temporarily change base for grunt.loadNpmTasks to work
                     grunt.file.setBase(asimovBuildPath);
