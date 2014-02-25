@@ -22,8 +22,9 @@ module.exports = function(grunt) {
         'requirejs',
         'uglify',
 
+        // Copy component assets to the dist directory
 
-        'sync:dist'
+        'sync'
     ]);
 
 };

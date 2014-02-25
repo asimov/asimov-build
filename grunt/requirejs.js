@@ -41,86 +41,22 @@ module.exports = function(grunt) {
         }, options) };
     }
 
-    // Are we're compiling a theme?
+    // Are we're compiling something theme-like?
     //
     // Then we create requirejs modules for file to be compiled.
     // To do this we need to check all the installed components
     // to see if they have any javascript to compile.
 
-    else if (isTheme) {
+    else {
 
         // Find all the root level javascript files in each component
         //
         // These are the files we'll actually compile. They should be resolving
         // their dependencies locally given the paths and metadata at correct.
 
-        grunt.file.expand(
-            { cwd: grunt.config.get('asimov.bowerConfig.directory') },
-            'asimov-*/src/js/*.js'
-        )
-        .forEach(function(file) {
-            var componentName = file.split('/')[0],
-
-                // Figure out this component's directory
-                //
-                // It will become the `baseUrl` for the requirejs module
-
-                cwd = path.join(
-                    grunt.config.get('asimov.bowerConfig.directory'),
-                    componentName,
-                    '/src/js'
-                ),
-
-                // Load this component's package.json
-                //
-                // We currently store asimov metadata for requirejs in there
-
-                pkg = _.merge(
-                    grunt.file.readJSON(path.join(cwd, '../../package.json')),
-                    { asimov: { requirejs: {} } }
-                )
-            ;
-
-            options[componentName] = _.merge({
-                options: {
-                    // this line a work around for a bug in r.js
-                    // https://github.com/jrburke/r.js/issues/587
-                    // https://github.com/gruntjs/grunt-contrib-requirejs/issues/45
-                    _buildPathToModuleIndex: [],
-
-                    baseUrl: cwd,
-                    dir: '<%= paths.js.dist %>',
-
-                    // Set the component's shim and path configs
-                    //
-                    // These configs are stored as metadata in each
-                    // component's package.json
-
-                    shim: pkg.asimov.requirejs.shim || {},
-                    paths: _.mapValues(
-                        pkg.asimov.requirejs.paths || {},
-
-                        // Adjust the path
-                        //
-                        // Component's expect to be compiled from their root
-                        // directory. This isn't true when compiled from a theme
-
-                        function(item) {
-                            return '../../' + item;
-                        }
-                    ),
-
-                    //
-                    // These are the files that are actually beign compiled
-                    //
-
-                    modules: grunt.file.expand({ cwd: cwd }, '*.js')
-                        .map(function (file) {
-                            return { name: file.replace(/\.js$/, '') };
-                        })
-                }
-            }, options);
-        });
+        options = _.merge(
+            options, require('../lib/requirejs-components')(grunt, options)
+        );
     }
 
     // Are we're compiling a component?
