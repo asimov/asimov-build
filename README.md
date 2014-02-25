@@ -3,7 +3,7 @@ asimov-build
 
 > [Grunt](http://gruntjs.com) tasks to compile an [Asimov](http://asimov.io) project.
 
-### Getting started
+## Getting started
 
 Install asimov-build via npm
 
@@ -11,7 +11,13 @@ Install asimov-build via npm
 npm install asimov-build --save-dev
 ```
 
-Add the following following config keys fo your `Gruntfile.js` with the corresponding locations for your application.
+Require asimov-build in your Gruntfile:
+
+```js
+var build = require('asimov-build')(grunt);
+```
+
+Add the following following config keys fo your `Gruntfile.js` with the corresponding source and destination file locations for your applications scss and js files.
 
 ```js
 paths: {
@@ -26,11 +32,33 @@ paths: {
 }
 ```
 
-Then require asimov-build to bootstrap the process. Make sure you do this **after** calling `grunt.initConfig`.
+## Building Asimov
 
-```js
-require('asimov-build')(grunt);
-```
+From here you can let asimov-build bootstrap Grunt with the necessary config and tasks for compiling Asimov.
+
+Alternative if you're not using Grunt, or simply don't want any magic in your asset pipeline you can query the specific config you'll need to integrate Asimov if your application.
+
+### API
+
+The core things you'll need to get Asimov compiling are correctly configured Sass load paths, and RequireJS compilation targets.
+
+#### getSassLoadPaths
+
+Returns an array of path that need to be part of Sass' load_path config.
+
+#### getRequireJSComponents
+
+Returns an object of RequireJS configs. This can be passes directly to [grunt-contrib-requirejs](https://github.com/gruntjs/grunt-contrib-requirejs) or you can iterate over each key and pass it's to `requirejs.config()`.
+
+This method optionally takes an object of r.js options which is use to normalise some configs like `paths`.
+
+#### bootstrap
+
+This is the simpliest way to get up with Asimov. It will load and configure a handful of grunt plugins with sane defaults.
+
+If you Gruntfile already configures task asimov-build wants to bootstrap it will simply add any additionally required config.
+
+**note** only ever call the bootstrap function after calling `grunt.initConfig`.
 
 ### Example
 
@@ -39,6 +67,8 @@ An example setup might look like this
 ```js
 module.exports = function(grunt) {
     'use strict';
+
+    var build = require('asimov-build')(grunt);
 
     //
     // Initialize config
@@ -68,10 +98,10 @@ module.exports = function(grunt) {
 
     // Bootstrap asimov-build.
     //
-    // Always load this after calling `grunt.initConfig`
+    // Always run this after calling `grunt.initConfig`
     // or bad things _will_ happen!
 
-    require('asimov-build')(grunt);
+    build.bootstrap();
 
 };
 ```
