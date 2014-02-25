@@ -1,6 +1,6 @@
 {
   "name": "asimov-build",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "asimov-build ============",
   "main": "index.js",
   "dependencies": {
