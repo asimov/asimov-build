@@ -4,14 +4,7 @@
   "description": "Grunt tasks to compile an Asimov project",
   "main": "index.js",
   "dependencies": {
-    "grunt": "~0.4.2"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "xzyfer",
-  "license": "MIT",
-  "devDependencies": {
+    "grunt": "~0.4.2",
     "grunt-contrib-sass": "~0.7.2",
     "matchdep": "~0.3.0",
     "grunt-autoprefixer": "~0.6.5",
@@ -25,6 +18,13 @@
     "grunt-sync": "0.0.5",
     "bower-config": "~0.5.0",
     "glob": "~3.2.8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "xzyfer",
+  "license": "MIT",
+  "devDependencies": {
   },
   "repository": {
     "type": "git",
