@@ -21,22 +21,20 @@ module.exports = function(grunt) {
         // Load asimov-build's grunt config from whereever it's installed
         //
 
-        buildConfig = require(asimovBuildPath + '/grunt/config/asimov')(grunt)
+        buildConfig = require(asimovBuildPath + '/grunt/config/asimov')(grunt),
+
+        //
+        // Lazily set asimov-build's grunt config under the `asimov` namespace
+        //
+
+        setConfig = function setConfig() {
+            grunt.config.set('asimov', buildConfig.asimov);
+        }
     ;
 
     return {
         bootstrap: function() {
-            //
-            // Set asimov-build's grunt config under the `asimov` namespace
-            //
-
-            grunt.config.set('asimov', buildConfig.asimov);
-
-            //
-            // Load asimov-build's grunt tasks from whereever it's installed
-            //
-
-            grunt.loadTasks(asimovBuildPath + '/grunt');
+            setConfig();
 
             //
             // Load asimov-build's npm tasks
@@ -52,11 +50,15 @@ module.exports = function(grunt) {
         },
 
         getSassLoadPaths: function() {
+            setConfig();
+
             return require('./lib/sass-load-paths')(grunt);
         },
 
         getRequireJSComponents: function(defaults) {
-            return require('../lib/requirejs-components')(grunt, defaults);
+            setConfig();
+
+            return require('./lib/requirejs-components')(grunt, defaults || {});
         }
     };
 
