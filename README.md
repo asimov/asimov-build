@@ -32,6 +32,16 @@ paths: {
 }
 ```
 
+Some Asimov components will have their own assets like fonts or images. You can configure where they're copied with the `paths.assets.dist` key.
+
+```
+paths: {
+    assets: {
+        dist: 'dist'
+    }
+}
+```
+
 ## Building Asimov
 
 From here you can let asimov-build bootstrap Grunt with the necessary config and tasks for compiling Asimov.
@@ -91,6 +101,11 @@ module.exports = function(grunt) {
             js: {
                 src: 'src/js',
                 dist: 'dist/js'
+            },
+            paths: {
+                assets: {
+                    dist: 'dist'
+                }
             }
         }
 

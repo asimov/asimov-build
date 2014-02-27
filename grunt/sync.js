@@ -9,18 +9,14 @@ module.exports = function(grunt) {
     //
 
     grunt.config('sync.asimov', {
-        files: _.map(grunt.config.get('asimov.components'), function(item) {
+        files: _.map(grunt.config('asimov.components'), function(item) {
             return {
                 expand: true,
                 cwd: item.replace(/\/[^\/]+\/?$/, ''),
                 src: ['**', '!**/scss/**', '!**/js/**', '!**/docs/**'],
-                dest: 'dist',
+                dest: grunt.config('paths.assets.dist'),
                 filter: function(src) {
                     return grunt.file.isFile(src);
-                },
-                rename: function(dest, src) {
-                    return [dest, src.replace(/asimov-[^/]+\/src\//, '')]
-                        .join(path.sep);
                 }
             };
         })

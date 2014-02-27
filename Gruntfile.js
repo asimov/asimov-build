@@ -20,6 +20,9 @@ module.exports = function(grunt) {
             js: {
                 src: 'src/js',
                 dist: 'dist/js'
+            },
+            assets: {
+                dist: 'dist'
             }
         }
 
