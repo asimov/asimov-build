@@ -1,6 +1,6 @@
 {
   "name": "asimov-build",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Grunt tasks to compile an Asimov project",
   "main": "index.js",
   "dependencies": {
