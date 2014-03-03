@@ -102,10 +102,8 @@ module.exports = function(grunt) {
                 src: 'src/js',
                 dist: 'dist/js'
             },
-            paths: {
-                assets: {
-                    dist: 'dist'
-                }
+            assets: {
+                dist: 'dist'
             }
         }
 
