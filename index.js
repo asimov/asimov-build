@@ -24,10 +24,21 @@ module.exports = function(grunt) {
         buildConfig = require(asimovBuildPath + '/grunt/config/asimov')(grunt)
     ;
 
+    //
+    // Set asimov-build's grunt config under the `asimov` namespace
+    //
+
     grunt.config.set('asimov', buildConfig.asimov);
 
     return {
         bootstrap: function() {
+
+            //
+            // Load asimov-build's grunt tasks from whereever it's installed
+            //
+
+            grunt.loadTasks(asimovBuildPath + '/grunt');
+
             //
             // Load asimov-build's npm tasks
             //
