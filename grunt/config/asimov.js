@@ -17,13 +17,17 @@ module.exports = function(grunt) {
         // Load the local bower.json file for future reference
         //
 
-        meta = grunt.file.readJSON('./bower.json'),
+        meta = grunt.file.exists('./bower.json') ?
+            grunt.file.readJSON('./bower.json') :
+            {},
 
         //
         // Load the local package.json file for future reference
         //
 
-        pkg = grunt.file.readJSON('./package.json'),
+        pkg = grunt.file.exists('./package.json') ?
+            grunt.file.readJSON('./package.json') :
+            {},
 
         //
         // Where can I find asimov-core?
@@ -94,7 +98,10 @@ module.exports = function(grunt) {
 
             jshintrc: grunt.file.exists('.jshintrc') ?
                 grunt.file.readJSON('.jshintrc') :
-                grunt.file.readJSON(asimovBuildPath + '/.jshintrc'),
+                (grunt.file.exists(asimovBuildPath + '/.jshintrc') ?
+                    grunt.file.readJSON(asimovBuildPath + '/.jshintrc') :
+                    {}
+                ),
 
             //
             // Make some asimov specific config available to tasks
