@@ -58,6 +58,14 @@ module.exports = function(grunt) {
 
         getRequireJSComponents: function(defaults) {
             return require('./lib/requirejs-components')(grunt, defaults || {});
+        },
+
+        getRequireJSPaths: function() {
+            return require('./lib/requirejs-paths')(grunt);
+        },
+
+        getRequireJSShims: function() {
+            return require('./lib/requirejs-shims')(grunt);
         }
     };
 
