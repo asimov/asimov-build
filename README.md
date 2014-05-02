@@ -87,8 +87,6 @@ An example setup might look like this
 module.exports = function(grunt) {
     'use strict';
 
-    var build = require('asimov-build')(grunt);
-
     //
     // Initialize config
     //
@@ -131,6 +129,7 @@ module.exports = function(grunt) {
     // Always run this after calling `grunt.initConfig`
     // or bad things _will_ happen!
 
+    var build = require('asimov-build')(grunt);
     build.bootstrap();
 
 };
