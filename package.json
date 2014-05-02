@@ -25,6 +25,9 @@
   "author": "xzyfer",
   "license": "MIT",
   "devDependencies": {},
+  "peerDependencies": {
+    "grunt": "4.x"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/asimov/asimov-build.git"
