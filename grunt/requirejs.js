@@ -13,14 +13,14 @@ module.exports = function(grunt) {
         bower = grunt.config.get('asimov.bower'),
         isTheme = bower.name.indexOf('-theme-') !== -1,
         options = {
-            options: {
+            options: _.merge({
                 logLevel: 3,
                 optimize: 'none',
                 keepBuildDir: true,
                 removeCombined: true,
                 shim: pkg.asimov.requirejs.shim || {},
                 paths: pkg.asimov.requirejs.paths || {}
-            }
+            }, grunt.config('requirejs.options'))
         }
     ;
 
