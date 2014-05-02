@@ -70,6 +70,15 @@ If you Gruntfile already configures task asimov-build wants to bootstrap it will
 
 **note** only ever call the bootstrap function after calling `grunt.initConfig`.
 
+### Config flags
+
+#### use_bundler
+
+Type: bool
+Default: true
+
+Whether to use [bundler](http://bundler.io/) when running tasks that use ruby i.e. sass
+
 ### Example
 
 An example setup might look like this
@@ -86,8 +95,8 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
 
-        // Your sass config here
-        ....
+        // Your grunt config here
+
 
         // Make some path information available to tasks
         //
@@ -105,6 +114,14 @@ module.exports = function(grunt) {
             assets: {
                 dist: 'dist'
             }
+        },
+
+        //
+        // Asimov build config
+        //
+
+        asimov_build: {
+            use_bundler: false
         }
 
     });

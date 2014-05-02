@@ -29,7 +29,7 @@ module.exports = function(grunt) {
                 style: 'expanded',
                 loadPath: sassLoadPaths,
                 cacheLocation: '.build/.sass-cache',
-                bundleExec: true
+                bundleExec: grunt.config('asimov_build.use_bundler') || true
             },
             dist: {
                 files: [{
