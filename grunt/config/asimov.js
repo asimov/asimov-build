@@ -51,9 +51,6 @@ module.exports = function(grunt) {
         // use simple globbing. Alternatively we could use bower.commands.list
 
         componentDirs = glob.sync(path.join(bowerConfig.directory, 'asimov-*'))
-            .map(function (depPath) {
-                return path.join(depPath, 'src', 'scss');
-            })
     ;
 
 

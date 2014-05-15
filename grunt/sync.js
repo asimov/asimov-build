@@ -12,8 +12,8 @@ module.exports = function(grunt) {
         files: _.map(grunt.config('asimov.components'), function(item) {
             return {
                 expand: true,
-                cwd: item.replace(/\/[^\/]+\/?$/, ''),
-                src: ['**', '!**/scss/**', '!**/js/**', '!**/docs/**'],
+                cwd: item,
+                src: ['*/**', '!**/*.scss', '!**/*.js', '!**/docs/**'],
                 dest: grunt.config('paths.assets.dist'),
                 filter: function(src) {
                     return grunt.file.isFile(src);
@@ -27,8 +27,8 @@ module.exports = function(grunt) {
             files: _.map(grunt.config('asimov.components'), function(item) {
                 return {
                     expand: true,
-                    cwd: item.replace(/\/[^\/]+\/?$/, ''),
-                    src: ['**/js/**'],
+                    cwd: item,
+                    src: ['**/*.js'],
                     dest: grunt.config('paths.assets.dist'),
                     filter: function(src) {
                         return grunt.file.isFile(src);
